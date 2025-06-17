@@ -46,22 +46,17 @@ public class ArbolBinario {
     }
 
 
-    public boolean buscar(Node node, int value){
-        
-
+    public boolean buscar(Node node, int value) {
         if (node == null) {
             return false;
-
         }
-        int primero = node.getLeft().getValue();
-        int centro = node.getValue();
-        int ultimo = node.getRight().getValue();
-        buscar(node, primero);
-        buscar(node, centro);
-        buscar(node, ultimo);
-        if (node.getValue()==value){
+        if (node.getValue() == value) {
             return true;
-        }return false;
-
+        }
+        if (value < node.getValue()) {
+            return buscar(node.getLeft(), value);
+        } else {
+            return buscar(node.getRight(), value);
+        }
     }
 }
