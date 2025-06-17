@@ -34,11 +34,34 @@ public class ArbolBinario {
             
         }
     }   
-    public void buscar(Node node, int value){
+
+    public void buscarArbol(int value){
+        boolean encontrado = buscar(root, value);
+        if (encontrado){
+            System.out.println("Encontrado");
+        }
+        else{
+            System.out.println("No encontrado");
+        }
+    }
+
+
+    public boolean buscar(Node node, int value){
+        
 
         if (node == null) {
-            System.out.println("");
+            return false;
+
         }
+        int primero = node.getLeft().getValue();
+        int centro = node.getValue();
+        int ultimo = node.getRight().getValue();
+        buscar(node, primero);
+        buscar(node, centro);
+        buscar(node, ultimo);
+        if (node.getValue()==value){
+            return true;
+        }return false;
 
     }
 }
